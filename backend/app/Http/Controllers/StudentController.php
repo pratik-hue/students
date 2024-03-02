@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
-use App\Models\StudentInfo;
-use Illuminate\Support\Facades\Hash;
-
 
 class StudentController extends Controller
 {
     public function register(Request $request)
     {
+        return $request->all();
         try {
             // Validate the incoming request data
             $validatedData = $request->validate([
@@ -23,7 +21,7 @@ class StudentController extends Controller
                 'contact_number' => 'required',
             ]);
         } catch (ValidationException $e) {
-            return response()->json(['error' => $e->validator->errors()->first()], 422);
+            return response()->json(['error' =>"sdsd"], 422);
         }
 
         // Create a new student record
@@ -41,5 +39,4 @@ class StudentController extends Controller
         // Return a success response
         return response()->json(['message' => 'Registration successful'], 201);
     }
-
 }

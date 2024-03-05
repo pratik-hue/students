@@ -56,5 +56,20 @@ class StudentController extends Controller
 
     return response()->json(['message' => 'Invalid credentials'], 401);
 }
-    
+
+public function userProfile()
+{
+    // Get the authenticated user
+    $user = Auth::user();
+
+    // Check if the user exists
+    if ($user) {
+        // Return the user details
+        return response()->json(['user' => $user], 200);
+    }
+
+    // If the user is not found or not authenticated, return an error
+    return response()->json(['message' => 'User not found'], 401);
+}
+
 }

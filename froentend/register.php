@@ -9,6 +9,9 @@
 <body>
     <h1>User Registration</h1>
     <form id="registrationForm" method="post" action="http://127.0.0.1:8000/api/register">
+        <label for="name">Name:</label>
+<input type="text" id="name" name="name" required><br><br>
+
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br><br>
 
@@ -42,6 +45,7 @@
     formData.append('qualification', document.getElementById('qualification').value);
     formData.append('course', document.getElementById('course').value);
     formData.append('contact_number', document.getElementById('contactNumber').value);
+    formData.append('name', document.getElementById('name').value);
 
     // Send POST request to registration endpoint
     fetch('http://127.0.0.1:8000/api/register', {

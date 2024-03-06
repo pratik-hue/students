@@ -23,9 +23,9 @@
                 success: function(response) {
                     // Display user details on the page
                     $('#userProfile').html('<p>Name: ' + response.user.name + '</p>' +
-                                           '<p>Email: ' + response.user.email + '</p>' +
-                                           // Add more fields as needed
-                    );
+                       '<p>Email: ' + response.user.email + '</p>' +
+                       // Add more fields as needed
+                       '');
                 },
                 error: function(error) {
                     console.error('Error fetching user profile:', error.responseJSON.message);

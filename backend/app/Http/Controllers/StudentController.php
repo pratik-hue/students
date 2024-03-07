@@ -71,5 +71,26 @@ public function userProfile()
     // If the user is not found or not authenticated, return an error
     return response()->json(['message' => 'User not found'], 401);
 }
+public function updateProfile(Request $request)
+{
+    $user = Auth::user();
+
+    // Validate the update request data
+    $request->validate([
+        'name' => 'required|string',
+        'email' => 'required|email|unique:users,email,' . $user->id,
+        'enrollment_number' => 'required|string',
+        'qualification' => 'required|string',
+        'course' => 'required|string',
+        'contact_number' => 'required|string',
+        // Add other fields you want to update
+    ]);
+
+    // Update user profile
+    $user->update($request->all());
+
+    return response()->json(['message' => 'Profile updated successfully', 'user' => $user], 200);
+}
+
 
 }

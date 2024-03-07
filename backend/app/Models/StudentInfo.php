@@ -19,4 +19,14 @@ class StudentInfo extends Model
     protected $casts = [
         'password' => 'hashed',
     ];
+    protected $fillable = [
+        'name',
+        'email',
+        'enrollment_number',
+        'password',
+        'qualification',
+        'course',
+        'contact_number',
+        // Add other fields you want to be fillable during mass assignment
+    ];
 }

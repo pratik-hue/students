@@ -23,3 +23,4 @@ Route::post('/register', [StudentController::class, 'register']);
 Route::post('/login', [StudentController::class, 'login']);
 Route::middleware('auth:sanctum')->get('/user-profile', [StudentController::class, 'userProfile']);
 Route::middleware('auth:sanctum')->post('/update-profile', [StudentController::class, 'updateProfile']);
+Route::middleware('auth:sanctum')->post('/logout', [StudentController::class, 'logout']);

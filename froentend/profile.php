@@ -78,6 +78,7 @@
         <p><strong>Contact Number:</strong> <span class="editable-text" id="contactNumber"></span><input type="text" class="editable-input" id="contactNumberInput" value="+1234567890"></p>
     </div>
     <button id="updateButton">Update Profile</button>
+    <button id="logoutButton" style="margin-left:100px">Logout</button>
 
     <!-- Updated script block -->
 <script>
@@ -155,6 +156,23 @@
                 $('#userProfile').addClass('edit-mode');
                 $('#updateButton').text('Save Changes');
             }
+        });
+        $('#logoutButton').click(function() {
+            // Call the logout API
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/logout',
+                type: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                success: function(response) {
+                    // Redirect to the login page after successful logout
+                    window.location.href = 'login.php';
+                },
+                error: function(error) {
+                    console.error('Error logging out:', error.responseJSON.message);
+                }
+            });
         });
     });
 </script>
